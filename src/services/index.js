@@ -13,6 +13,13 @@ export const getProducts = () => {
                     id
                     description
                     shortDescription
+                    images {
+                        ... on Image {
+                            id
+                            url
+                            productName
+                        }
+                    }
                 }
             }
         `;

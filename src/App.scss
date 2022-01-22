@@ -1,0 +1,58 @@
+//  logo https://cdn.shopify.com/s/files/1/2386/2119/t/12/assets/logo-green.svg
+
+.container {
+    display: grid;
+    grid-template-columns: 42% 55%;
+    padding: 0 5%;
+    column-gap: 50px;
+    
+    .section {
+        display: flex;
+        flex-direction: column;
+        h1 {
+            
+        }
+
+        .row {
+            display: flex;
+            p {
+                margin-right: 5%;
+                &.stars span {
+                    color: yellow;
+                }
+                &:after {
+                    content: "|";
+                }
+                &:last-child:after {
+                    content: '';
+                }
+            }
+            
+        }
+
+
+    }
+}
+
+.carousel-root {
+    .carousel {
+        .control-arrow {
+            position: relative;
+        }
+        .control-prev, .control-next {
+
+        }
+        .control-prev {
+
+        }
+        .control-next {
+
+        }
+        .thumbs-wrapper {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    
+}
