@@ -32,12 +32,18 @@ const Form = ({cb}) => {
     }
 
     return (
-        <form onSubmit={submit}>
-            <label htmlFor="name">Child's name:</label>
-            <input type="text" name="name" onChange={handleChange} placeholder="Enter name" value={form.name}/>
-            <label htmlFor="birthday">Child's Birthdate: </label>
-            <input type="date" name="birthday" onChange={handleChange} placeholder="Birthday" value={form.birthday} min={calendar.min} max={calendar.max}/>
-            <input type="submit" value="Submit" />
+        <form className="product-form" onSubmit={submit}>
+            <div>
+                <label htmlFor="name">Your child's name (optional)</label>
+                <input type="text" name="name" onChange={handleChange} value={form.name}/>
+            </div>
+            <div>
+                <label htmlFor="birthday">Birth date/due date </label>
+                <input type="date" name="birthday" onChange={handleChange} placeholder="Birthday" value={form.birthday} min={calendar.min} max={calendar.max}/>
+            </div>
+            <div>
+                <input type="submit" className="submit-form-btn" value="Subscribe Now" />
+            </div>
         </form>
     )
 }
