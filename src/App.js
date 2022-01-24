@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import './App.scss';
 
 import { getProducts } from './services'
-import { Product, Form, BreadCrumb } from './components'
+import { Product, BreadCrumb } from './components'
 
 
 function App() {
     const [products, setProducts] = useState({});
-    const [customer, setCustomer] = useState({});
+    // const [customer, setCustomer] = useState({});
     const [featuredProduct, setFeaturedProduct] = useState({});
 
     useEffect(async () => {
@@ -36,7 +36,7 @@ function App() {
     const getCustomerProfile = ({name, birthday}) => {
         // date format: '1986-01-05'
         if(typeof name === 'string' && birthday) {
-            setCustomer({name, birthday})
+            // setCustomer({name, birthday})
         }
 
         if(birthday) {
