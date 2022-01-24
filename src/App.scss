@@ -340,6 +340,7 @@ form.product-form {
             width: 100%;
             border-radius: 0;
             border: 1px solid $dark-gray;
+            box-sizing: border-box;
         }
         .submit-form-btn {
             padding: 0;
