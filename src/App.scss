@@ -181,10 +181,10 @@ header {
             @media (min-width: $lg-breakpoint) {
                 display: flex;
             }
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             &.product-name {
                 h1 {
-                    margin-bottom: 0;
+                    margin: 25px 0 0;
                 }
             }
             &.info {
@@ -192,8 +192,7 @@ header {
                     display: grid;
                     grid-template-columns: auto 1fr 1fr;
                     column-gap: 20px; /*I Required this have a space between two grid columns*/ 
-                    border-bottom: 1px solid $light-gray;
-                    padding-bottom: 20px;
+                    // padding-bottom: 20px;
                     font-size: $font-xs;
                     li {
                         border-right: 1px solid #000000;
@@ -225,6 +224,8 @@ header {
                 }
             }
             &.description {
+                border-top: 1px solid $light-gray;
+                padding-top: 25px;
                 padding-right: 5vw;
                 p {
                     line-height: 24px;
