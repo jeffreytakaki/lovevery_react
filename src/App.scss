@@ -353,3 +353,12 @@ form.product-form {
         }
     }
 }
+
+.error-msg {
+    padding: 5px;
+    text-align: center;
+    background: red;
+    color: white;
+    margin-top: 5px;
+    transition: 1s all;
+}

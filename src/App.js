@@ -41,7 +41,7 @@ function App() {
 
         if(birthday) {
           const age = getAge(new Date(birthday));
-          setFeaturedProduct(products[age])
+          if(age !== false) setFeaturedProduct(products[age])
         }
         
     }
@@ -58,7 +58,7 @@ function App() {
 
         const yearDiff = today.year - birthDate.year;
         const ageInMonths =  ((today.month + (12*yearDiff)) - birthDate.month);
-        return ageInMonths;
+        return (ageInMonths == 12) ? 11 : ageInMonths;
     }
 
     return (
