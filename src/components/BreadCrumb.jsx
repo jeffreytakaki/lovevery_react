@@ -5,13 +5,13 @@ const BreadCrumb = ({product}) => {
         <div className="breadcrumbs">
             <ul>
                 <li>
-                    <a href="">Shop</a>    
+                    <a href="/">Shop</a>    
                 </li>
                 <li>
-                    <a href="">The Play Kits</a>
+                    <a href="/">The Play Kits</a>
                 </li>
                 <li className="current">
-                    <a href="">{product.name}</a>
+                    <a href="/">{product.name}</a>
                 </li>
             </ul>
         </div>
