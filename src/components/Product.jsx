@@ -4,11 +4,7 @@ import ReactStars from 'react-stars'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel'
 
-const Product = ({product, getCustomerProfile}) => {
-
-        console.log('Product ->', product);
-        
- 
+const Product = ({product, getCustomerProfile}) => { 
     return (
         <div className="container">
             

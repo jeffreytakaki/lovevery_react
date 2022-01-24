@@ -119,27 +119,17 @@ header {
 
 }
 
-// .breadcrumbs ul {
-//     display: grid;
-//     grid-template-columns: auto auto auto;
-//     grid-column-gap: 45px;
-//     column-gap: 1vw;
-//     font-size: 14px;
-//     width: 500px;
-//     li {
-//         border-right: 1px solid #000000;
-//         padding-right: 25px;
-//     }
-
-// }
 .breadcrumbs ul {
     display: flex;
     font-size: $font-sm;
-    width: 500px;
+    width: 100%;
     margin: 25px 0;
     font-weight: $font-semibold;
     li {
-        padding: 0px 15px 0 0;
+        @media (min-width: $lg-breakpoint) {
+            padding: 0px 15px 0 0;    
+        }
+        padding: 0px 2vw 0 0;
         &.current {
             font-weight: 400;
         }
@@ -266,6 +256,10 @@ header {
                     }
                     img {
                         width: 60px;
+                        @media (max-width: $sm-breakpoint) {
+                            width: 15vw;
+                        }
+                        
                     }
                     &.indicator {
                         margin-right: 1vw;
