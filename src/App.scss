@@ -341,6 +341,7 @@ form.product-form {
             border-radius: 0;
             border: 1px solid $dark-gray;
             box-sizing: border-box;
+            -webkit-appearance: none;
         }
         .submit-form-btn {
             padding: 0;
