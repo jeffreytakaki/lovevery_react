@@ -9,16 +9,31 @@ $yellow: #e6e600;
 
 $font-xs: 12px;
 $font-sm: 14px;
+$font-lg: 28px;
+$font-semibold: 600;
+$font-bold: bold;
 
-$lg-breakpoint: 801px;
+$lg-breakpoint: 990px;
+$sm-breakpoint: 500px;
+$xs-breakpoint: 360px;
 
 p,a,h1 {
     color: $dark-gray;
     margin: 0;
 }
 
+h1 {
+    font-size: $font-lg;
+}
+
 a {
     text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -29,6 +44,14 @@ header {
         grid-template-columns: 38% 24% 38%;
         padding: 10px 2vw;
         height: 50px;
+        @media (max-width: $sm-breakpoint) {
+            grid-template-columns: 100%;
+            grid-template-areas: 
+                "logo"
+                "left"
+                "right";
+            height: auto;
+        }
         .navItem {
             display: flex;
             flex-direction: row;
@@ -46,8 +69,14 @@ header {
             }
             &.navBar-left {
                 justify-content: flex-start;
+                @media (max-width: $sm-breakpoint) {
+                    grid-area: left;
+                    justify-content: center;
+                }
+                
             }
             &.navBar-center {
+                
                 a.logo {
                     background-image: url('https://cdn.shopify.com/s/files/1/2386/2119/t/12/assets/logo-green.svg');
                     background-repeat: no-repeat;
@@ -55,14 +84,28 @@ header {
                     width: 100%;
                     height: 25px;
                     background-position-y: center;
+                    
                     &:after {
                         margin-left: unset;
                         content: "";
                     }
+                    @media (max-width: $sm-breakpoint) {
+                        background-position-x: center;
+                    }
+                }
+                @media (max-width: $sm-breakpoint) {
+                    grid-area: logo;
+                    justify-content: center;
+                    margin-bottom: 10px;
                 }
             }
             &.navBar-right {
+                
                 justify-content: flex-end;
+                @media (max-width: $sm-breakpoint) {
+                    grid-area: right;
+                    justify-content: center;
+                }
             }
         }
     }
@@ -70,8 +113,50 @@ header {
 
 .pageContainer {
     padding: 0 7vw;
+    @media (max-width: $sm-breakpoint) {
+        padding: 0 2vw;
+    }
+
 }
 
+// .breadcrumbs ul {
+//     display: grid;
+//     grid-template-columns: auto auto auto;
+//     grid-column-gap: 45px;
+//     column-gap: 1vw;
+//     font-size: 14px;
+//     width: 500px;
+//     li {
+//         border-right: 1px solid #000000;
+//         padding-right: 25px;
+//     }
+
+// }
+.breadcrumbs ul {
+    display: flex;
+    font-size: $font-sm;
+    width: 500px;
+    margin: 25px 0;
+    font-weight: $font-semibold;
+    li {
+        padding: 0px 15px 0 0;
+        &.current {
+            font-weight: 400;
+        }
+        &:after {
+            content: '>';
+            padding-left: 2vw;
+        }
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child:after {
+            content: '';
+
+        }
+    }
+
+}
 
 .container {
     display: grid;
@@ -83,36 +168,59 @@ header {
     }
     
     .section {
-        display: flex;
+        display: block;
         flex-direction: column;
-        
+        margin-bottom: 50px;
+        @media (min-width: $lg-breakpoint) {
+            display: flex;
+        }
+
 
         .row {
-            display: flex;
-            margin-bottom: 25px;
+            display: block;
+            @media (min-width: $lg-breakpoint) {
+                display: flex;
+            }
+            margin-bottom: 15px;
             &.product-name {
                 h1 {
                     margin-bottom: 0;
                 }
             }
             &.info {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                border-bottom: 1px solid lightgrey;
-                p {
-                    margin: 0;
-                    padding-right: 2vw;
-                    font-size: 14px;
-                    padding-bottom: 25px;
-                    border-right: 1px solid $light-gray;
-                    &.stars span {
-                        color: $yellow;
-                    }
-                    &:after {
-                        content: "|";
-                    }
-                    &:last-child:after {
-                        content: '';
+                ul {
+                    display: grid;
+                    grid-template-columns: auto 1fr 1fr;
+                    column-gap: 20px; /*I Required this have a space between two grid columns*/ 
+                    border-bottom: 1px solid $light-gray;
+                    padding-bottom: 20px;
+                    font-size: $font-xs;
+                    li {
+                        border-right: 1px solid #000000;
+                        padding-right: 25px;
+                        display: flex;
+                        align-items: center;
+                        @media (max-width: $sm-breakpoint) {
+                            flex-direction: column;    
+                            padding-right: 2vw;   
+                        }
+                        p {
+                            margin: 0;
+                            font-size: 14px;
+                            &.stars span {
+                                color: $yellow;
+                            }
+                           
+                        }
+                        &.reviews {
+                            
+                            .stars-container {
+                                margin-right: 5px;
+                            }
+                        }
+                        &:last-child {
+                            border-right: none;
+                        }
                     }
                 }
             }
@@ -123,15 +231,51 @@ header {
                     font-weight: 600;
                 }
             }
+            &.disclaimer {
+                font-size: $font-sm;
+                font-weight: $font-bold;
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    li {
+                        display: flex;
+                        align-items: center;
+                        img {
+                            height: 25px;
+                            width: auto;
+                            margin-right: 1vw;
+                        }
+                    }
+                }
+            }
             &.badges ul {
                 display: flex;
                 list-style-type: none;
                 justify-content: flex-start;
                 padding: 0;
                 li {
-                    margin-right: 2vw;
+                    position: relative;
+                    margin-right: 3vw;
+                    display: flex;
+                    align-items: center;
+                    font-weight: $font-semibold;
+                    &:first-child {
+                        margin-left: 0;
+                    }
                     img {
                         width: 60px;
+                    }
+                    &.indicator {
+                        margin-right: 1vw;
+                        font-size: $font-sm;
+                        &:before {
+                            content: "\25CF";
+                            color: $green;
+                            font-weight: bold;
+                            font-size: 12px;
+                            margin-right: 5px;
+                        }
                     }
                 }
             }
@@ -176,10 +320,8 @@ form.product-form {
     grid-template-columns: 100%;
     column-gap: 1vw;
     align-items: end;
-    height: 75px;
-    margin-top: 15px;
     @media (min-width: $lg-breakpoint) {
-        grid-template-columns: 30% 30% auto;
+        grid-template-columns: 35% 30% auto;
         column-gap: 2vw;
     }
 

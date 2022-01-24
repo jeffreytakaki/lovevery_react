@@ -20,6 +20,8 @@ export const getProducts = () => {
                             productName
                         }
                     }
+                    numberOfReviews
+                    averageReviewRating
                 }
             }
         `;

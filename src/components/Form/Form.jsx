@@ -28,7 +28,9 @@ const Form = ({cb}) => {
 
     const submit = (e) => {
         e.preventDefault();
+        setForm({name: "", birthday: ""})
         cb(form)
+
     }
 
     return (
