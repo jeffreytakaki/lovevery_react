@@ -16,7 +16,7 @@ const Product = ({product, getCustomerProfile}) => {
                 <Carousel showArrows={true} showIndicators={false} showStatus={false} >
                 {product.images?.map(image => (
                     <div key={image.id}>
-                        <img src={image.url} />
+                        <img src={image.url} alt={image.productName} />
                     </div>
                 ))}
                 </Carousel>
