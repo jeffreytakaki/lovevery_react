@@ -30,6 +30,7 @@ const Form = ({cb}) => {
         
         const isValid = moment(form.birthday, "YYYY-MM-DD", true).isValid()
 
+        // must have the right format
         if(!isValid) {
             setError('Please enter a valid date');
             return false
@@ -39,16 +40,19 @@ const Form = ({cb}) => {
         const enteredDate = new Date(form.birthday);
         const diff = Math.floor((Date.parse(today) - Date.parse(form.birthday)) / 86400000);
     
+        // date must be between 0 and 12 months old
         if(Math.abs(enteredDate.getFullYear - today.getFullYear()) > 1 || diff > 364) {
-            setError('Enter a valid date')
+            setError('Please enter a valid date')
             return false;
         }
     
+        // date may not occur in the future
         if(today < new Date(form.birthday)) {
             setError('Please enter a birthday of 12 months or less');
             return false
         } 
 
+        // all validations pass. 
         setError('')
         return true;
     }
@@ -64,9 +68,7 @@ const Form = ({cb}) => {
 
     const submit = (e) => {
         e.preventDefault();
-        // setForm({name: "", birthday: ""})
-        // cb(form)
-
+        console.log('submit form') 
     }
 
     return (
