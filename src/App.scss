@@ -1,10 +1,14 @@
 //  logo https://cdn.shopify.com/s/files/1/2386/2119/t/12/assets/logo-green.svg
 
 // GLOBAL STYLING
-$dark-gray: #514f4e;
+// $dark-gray: #514f4e;
+$dark-gray: rgb(81, 79, 78);
 $light-gray: lightgrey;
-$green: #669900;
+$green: rgb(102,153,0);
+$green50: rgb(78, 219, 201);
+// $green50: rgba(102,153,0, 0.25);
 $yellow: #e6e600;
+$blue: rgb(83, 109, 196);
 
 
 $font-xs: 12px;
@@ -34,6 +38,12 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+input {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+     box-sizing:        border-box;
 }
 
 
@@ -317,16 +327,36 @@ header {
         left: 50%;
         width: 90%;
         transform: translate(-50%, -50%);
+        max-width: 600px;
+        padding: 5%;
+        box-sizing: border-box;
+        background-color: $blue;
+        color: white;
         h1 {
             text-align: center;
             margin-bottom: 5vw;
+            color: inherit;
         }
         form.product-form {
             grid-template-columns: 100%;
             max-width: 500px;
             margin: 0 auto;
-            width: 100%;    
+            width: 100%;
+            input[type='text'] {
+                background-color: white;
+                border: 1px solid white;
+            }
+            .submit-form-btn {
+                border: 1px solid white;
+                background-color: inherit;
+                color: white;
+                cursor: pointer;
+            }
+            div {
+                margin-bottom: 5px;
+            }
         }    
+
     }
     form.product-form {
         display: grid;

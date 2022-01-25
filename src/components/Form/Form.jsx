@@ -66,7 +66,7 @@ const Form = ({onLoadOnly, customer, cb}) => {
 
     },[form.birthday])
 
-    const submit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         console.log('submit form only for onload') 
         if(onLoadOnly && handleDateValidation()) {
@@ -78,7 +78,7 @@ const Form = ({onLoadOnly, customer, cb}) => {
     return (
         <div className={`form-container ${onLoadOnly ? 'welcome' : ''}`}>
             {onLoadOnly && <h1>Let's start with your child's information</h1>}
-            <form className={`product-form`} onSubmit={submit}>
+            <form className={`product-form`} onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Your child's name (optional)</label>
                     <input type="text" name="name" onChange={handleChange} value={form.name}/>
