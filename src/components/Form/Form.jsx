@@ -3,8 +3,8 @@ import moment from 'moment';
 import Error from '../Error';
 
 
-const Form = ({cb}) => {
-    const [form, setForm] = useState({name: "", birthday: ""})
+const Form = ({onLoadOnly, customer, cb}) => {
+    const [form, setForm] = useState({name: customer ? customer.name : '',  birthday: customer ? customer.birthday : ''})
     const [calendar, setCalendar] = useState({min: '', max: ''})
     const [error, setError] = useState('')
     const handleChange = e => {
@@ -60,7 +60,7 @@ const Form = ({cb}) => {
     useEffect(() => {
         setCalendarMax()
 
-        if(handleDateValidation()) {
+        if(!onLoadOnly && handleDateValidation()) {
             cb(form)
         }
 
@@ -68,12 +68,17 @@ const Form = ({cb}) => {
 
     const submit = (e) => {
         e.preventDefault();
-        console.log('submit form') 
+        console.log('submit form only for onload') 
+        if(onLoadOnly && handleDateValidation()) {
+            cb(form)
+        }
+        
     }
 
     return (
-        <div>
-            <form className="product-form" onSubmit={submit}>
+        <div className={`form-container ${onLoadOnly ? 'welcome' : ''}`}>
+            {onLoadOnly && <h1>Let's start with your child's information</h1>}
+            <form className={`product-form`} onSubmit={submit}>
                 <div>
                     <label htmlFor="name">Your child's name (optional)</label>
                     <input type="text" name="name" onChange={handleChange} value={form.name}/>
@@ -83,7 +88,7 @@ const Form = ({cb}) => {
                     <input type="date" name="birthday" onChange={handleChange} placeholder="Birthday" value={form.birthday} min={calendar.min} max={calendar.max}/>
                 </div>
                 <div>
-                    <input type="submit" className="submit-form-btn" value="Subscribe Now" />
+                    <input type="submit" className="submit-form-btn" value={onLoadOnly ? 'Show Kit' : 'Subscribe Now'} />
                 </div>
             </form>
             {error && <Error msg={error} />}

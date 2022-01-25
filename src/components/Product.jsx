@@ -4,7 +4,7 @@ import ReactStars from 'react-stars'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel'
 
-const Product = ({product, getCustomerProfile}) => { 
+const Product = ({product, customer, getCustomerProfile}) => { 
     return (
         <div className="container">
             
@@ -35,7 +35,7 @@ const Product = ({product, getCustomerProfile}) => {
                     </ul>
                 </div>
                 <div className="row">
-                    <Form cb={getCustomerProfile} />
+                    <Form customer={customer} cb={getCustomerProfile} />
                 </div>
                 <div className="row badges">
                     <ul>

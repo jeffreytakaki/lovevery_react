@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './App.scss';
 
 import { getProducts } from './services'
-import { Product, BreadCrumb } from './components'
+import { Product, BreadCrumb, Form } from './components'
 
 
 function App() {
     const [products, setProducts] = useState({});
-    // const [customer, setCustomer] = useState({});
+    const [customer, setCustomer] = useState({});
     const [featuredProduct, setFeaturedProduct] = useState({});
+    const [showProduct, setShowProduct] = useState(false)
 
     useEffect(async () => {
         const retrieveProducts = await getProducts();
@@ -26,7 +27,6 @@ function App() {
                   obj[count + 1] = retrieveProducts[i];
                   count = count + 2
             }
-            console.log('obj ->', obj)
             setProducts(obj)
         }
   
@@ -41,7 +41,11 @@ function App() {
 
         if(birthday) {
           const age = getAge(new Date(birthday));
-          if(age !== false) setFeaturedProduct(products[age])
+          if(age !== false) {
+            setCustomer({name, birthday})
+            setFeaturedProduct(products[age])
+            setShowProduct(true)
+          }
         }
         
     }
@@ -63,8 +67,9 @@ function App() {
 
     return (
       <div className="App">
-        <BreadCrumb product={featuredProduct} />
-        <Product product={featuredProduct} getCustomerProfile={getCustomerProfile} />
+          {!customer.birthday && <Form onLoadOnly={true} cb={getCustomerProfile} />}
+          {customer.birthday && <BreadCrumb product={featuredProduct} />}
+          {customer.birthday && <Product product={featuredProduct} customer={customer} getCustomerProfile={getCustomerProfile} />}        
       </div> 
     );
 }
