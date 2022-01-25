@@ -11,8 +11,9 @@ $yellow: #e6e600;
 $blue: rgb(83, 109, 196);
 
 
-$font-xs: 16px;
-$font-sm: 16px;
+$font-xs: 12px;
+$font-sm: 14px;
+$font-med: 16px;
 $font-lg: 28px;
 $font-semibold: 600;
 $font-bold: bold;
@@ -382,6 +383,9 @@ header {
                 font-size: $font-xs;
                 margin-bottom: 5px;
                 line-height: 0;
+                @media (max-width: $sm-breakpoint) {
+                    font-size: $font-med;
+                }
             }
             input {
                 margin-top: 5px;
@@ -393,6 +397,9 @@ header {
                 border: 1px solid $dark-gray;
                 box-sizing: border-box;
                 -webkit-appearance: none;
+                @media (max-width: $sm-breakpoint) {
+                    font-size: $font-med;
+                }
             }
             .submit-form-btn {
                 padding: 0;
